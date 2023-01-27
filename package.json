@@ -1,0 +1,30 @@
+{
+  "name": "echo-web-api-javascript",
+  "version": "1.0.0",
+  "description": "echo web API",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run start:lambda",
+    "test": "npm run test:lambda",
+    "start:lambda": "node index.js",
+    "test:lambda": "echo 'Running lambda test...'",
+    "build:lambda": "echo 'Building lambda...'",
+    "package:lambda": "cd src && zip lambda.zip index.js",
+    "serve:lambda": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raymondsquared/echo-web-api-javascript.git"
+  },
+  "author": "Ray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raymondsquared/echo-web-api-javascript/issues"
+  },
+  "homepage": "https://github.com/raymondsquared/echo-web-api-javascript#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
+    "husky": "^8.0.3"
+  }
+}
