@@ -1,5 +1,10 @@
 .husky
+
 node_modules
+
 lambda.zip
+src/package.json
+src/package-lock.json
+
 .terraform*
 terraform.tfstate*

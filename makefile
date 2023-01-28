@@ -16,6 +16,7 @@ build:
 
 package:
 	echo "Packaging..."
+	npm run package:npm
 	npm run package:lambda
 	cp ./src/lambda.zip ./infrastructure/lambda.zip
 
