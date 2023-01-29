@@ -4,5 +4,10 @@ Simple web API to echo back your CRUD operations
 
 ## TO DO
 
+Application:
+
 - Create DynamoDB client in a separate class
-- Unit tests
+
+Infrastructure:
+
+- Move API key to API Gateway

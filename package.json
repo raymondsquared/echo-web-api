@@ -4,13 +4,20 @@
   "description": "echo web API",
   "main": "index.js",
   "scripts": {
-    "start": "npm run start:lambda",
+    "clean": "rm -rf app/dist/",
+    "lint": "./node_modules/.bin/eslint",
     "test": "npm run test:lambda",
+    "test:lambda": "jest",
+    "start": "npm run start:lambda",
     "start:lambda": "node index.js",
-    "test:lambda": "echo 'Running lambda test...'",
-    "build:lambda": "echo 'Building lambda...'",
-    "package:npm": "rm -rf src/node_modules && mkdir src/node_modules && cp package.json src && cd src && npm install --omit=dev",
-    "package:lambda": "cd src && zip -r lambda.zip index.js node_modules/",
+    "build:layers": "npm run build:base-node-modules-layer",
+    "build:base-node-modules-layer": "mkdir -p app/dist/layers/base-node-modules/nodejs && cp package.json app/dist/layers/base-node-modules/nodejs && cd app/dist/layers/base-node-modules/nodejs && npm install --omit=dev",
+    "build:lambdas": "npm run build:echo-web-api-lambda",
+    "build:echo-web-api-lambda": "mkdir -p app/dist/lambdas/echo-web-api-lambda && cp app/src/**.js app/dist/lambdas/echo-web-api-lambda && rm -f app/dist/lambdas/echo-web-api-lambda/*.test.js",
+    "package:layers": "npm run package:base-node-modules-layer",
+    "package:base-node-modules-layer": "cd app/dist/layers/base-node-modules && zip -r base-node-modules-layer.zip nodejs",
+    "package:lambdas": "npm run package:echo-web-api-lambda",
+    "package:echo-web-api-lambda": "cd app/dist/lambdas/echo-web-api-lambda && zip -r echo-web-api-lambda.zip *.js",
     "serve:lambda": "node index.js"
   },
   "repository": {
@@ -26,9 +33,14 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
-    "husky": "^8.0.3"
+    "eslint": "^8.33.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-jest": "^27.2.1",
+    "husky": "^8.0.3",
+    "jest": "^29.4.1"
   },
   "dependencies": {
-    "aws-sdk": "^2.1304.0"
+    "aws-sdk": "^2.1304.0",
+    "http-status": "^1.6.2"
   }
 }

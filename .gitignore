@@ -2,7 +2,8 @@
 
 node_modules
 
-lambda.zip
+dist
+*.zip
 src/package.json
 src/package-lock.json
 

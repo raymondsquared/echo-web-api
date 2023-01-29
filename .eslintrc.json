@@ -1,0 +1,21 @@
+{
+  "env": {
+    "es2022": true,
+    "jest/globals": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "plugins": [
+    "jest"
+  ],
+  "rules": {
+    "no-console": "off"
+  }
+}
+
