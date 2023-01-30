@@ -2,7 +2,6 @@
 echo:
 	echo "Printing..."
 
-
 .PHONY: clean
 clean:
 	echo "Cleaning..."
